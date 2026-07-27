@@ -1,139 +1,148 @@
 import Image from "next/image";
-import { CalendarCheck, Eye, Smile, ShieldCheck, Flame, Star } from "lucide-react";
-import { BUSINESS_INFO } from "@/data/cabinsData";
+import { CalendarCheck, Eye, Flame, Wifi, TreePine } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      {/* Background glow accents */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#F5A623]/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#F5A623]/5 rounded-full blur-3xl pointer-events-none -z-10" />
+    <section id="inicio" className="relative w-full h-[500px] md:h-[550px] lg:h-[650px] flex items-center bg-[#0F1B14] overflow-hidden">
+      
+      {/* 1. IMAGEN PANORÁMICA FULL-BLEED (1920x900px, 16:7.5, cabaña a la derecha, object-cover) */}
+      <Image
+        src="/images/hero-panoramic.png"
+        alt="Cabaña Refugio del Bosque en Pucón"
+        fill
+        className="object-cover object-right sm:object-center"
+        priority
+        unoptimized
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      {/* 2. OVERLAY OSCURO GRADIENTE (#0F1B14 ~80% opacidad en lado izquierdo a transparente en derecha) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0F1B14] via-[#0F1B14]/85 sm:via-[#0F1B14]/75 to-[#0F1B14]/15 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#0F1B14]/30 z-10 pointer-events-none" />
+
+      {/* 3. CONTENIDO DE TEXTO SUPERPUESTO (Alineado a la izquierda, fijos por breakpoint) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center py-6">
+        <div className="max-w-2xl space-y-4 sm:space-y-5">
           
-          {/* Left Column: Headlines & CTAs */}
-          <div className="lg:col-span-7 space-y-8">
+          {/* Badge en Hero (peso 500 medium, sutil) */}
+          <div className="inline-flex items-center gap-2 bg-[#16241C]/90 backdrop-blur-md border border-[#2A3A30] px-3.5 py-1.5 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#F5A623]" />
+            <span className="text-[11px] font-medium text-[#F5A623] tracking-wide uppercase">
+              ALOJAMIENTO PREMIUM EN PUCÓN
+            </span>
+          </div>
+
+          {/* Título H1 (Fijo: 32px mobile, 40px tablet, 48px desktop, peso 800) */}
+          <h1 className="font-heading text-[32px] md:text-[40px] lg:text-[48px] font-extrabold text-white leading-tight tracking-tight">
+            Escápate a tu cabaña <br />
+            <span className="text-[#F5A623]">
+              en el bosque nativo
+            </span>
+          </h1>
+
+          {/* Párrafo descriptivo (Fijo: 16px mobile/tablet, 18px desktop) */}
+          <p className="text-[#A8B0AB] text-[16px] lg:text-[18px] leading-relaxed max-w-xl font-normal">
+            Disfruta de la tranquilidad del sur de Chile en nuestras exclusivas cabañas equipadas con tinaja caliente a leña, vistas al volcán y privacidad absoluta.
+          </p>
+
+          {/* Fila de 2 botones (peso 600 semibold, radius 8px) */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+            <a
+              href="#cotizador"
+              className="inline-flex items-center justify-center gap-2 bg-[#F5A623] hover:bg-[#E09216] text-[#0F1B14] font-heading font-semibold text-[15px] sm:text-[16px] px-5 sm:px-6 py-3 rounded-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+              Reservar ahora
+            </a>
+
+            <a
+              href="#calendario"
+              className="inline-flex items-center justify-center gap-2 bg-[#16241C]/80 backdrop-blur-md hover:bg-[#16241C] text-white font-heading font-semibold text-[15px] sm:text-[16px] px-5 sm:px-6 py-3 rounded-lg border border-[#2A3A30] hover:border-[#A8B0AB]/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Eye className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]" />
+              Ver disponibilidad
+            </a>
+          </div>
+
+
+          {/* Divisor delgado #2A3A30 */}
+          <div className="border-t border-[#2A3A30]/80 pt-4 sm:pt-6" />
+
+          {/* Fila de 3 mini-features (Fondos variados para romper simetría perfecta + pesos 600 semibold) */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-lg">
             
-            {/* Top pill badge */}
-            <div className="inline-flex items-center gap-2 bg-[#1A1A1A] border border-[#F5A623]/30 px-4 py-1.5 rounded-full shadow-inner">
-              <span className="w-2 h-2 rounded-full bg-[#F5A623] animate-pulse" />
-              <span className="text-xs font-semibold text-[#F5A623] tracking-wide uppercase">
-                Alojamiento Premium en {BUSINESS_INFO.location.split(",")[0]}
+            {/* Feature 1: Fondo acento suave + borde acento */}
+            <div className="space-y-1">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F5A623]/15 border border-[#F5A623]/30 flex items-center justify-center text-[#F5A623]">
+                <TreePine className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+              </div>
+              <span className="font-heading font-semibold text-white text-[11px] sm:text-xs block leading-tight">
+                100% Naturaleza
+              </span>
+              <span className="text-[10px] sm:text-[11px] text-[#A8B0AB] block font-normal">
+                Bosque nativo
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] tracking-tight">
-              Escápate a tu cabaña <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5A623] via-[#FFC04D] to-[#F5A623]">
-                en el bosque nativo
+            {/* Feature 2: Solo borde sin relleno + texto gris neutro */}
+            <div className="space-y-1">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-transparent border border-[#2A3A30] flex items-center justify-center text-[#A8B0AB]">
+                <Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2]" />
+              </div>
+              <span className="font-heading font-semibold text-white text-[11px] sm:text-xs block leading-tight">
+                Wifi Starlink
               </span>
-            </h1>
-
-            {/* Subhead text */}
-            <p className="text-[#A0A0A0] text-base sm:text-lg max-w-xl font-normal leading-relaxed">
-              Disfruta de la tranquilidad del sur de Chile en nuestras exclusivas cabañas equipadas con tinaja caliente a leña, vistas al volcán y privacidad absoluta.
-            </p>
-
-            {/* Dual CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href="#calculadora"
-                className="inline-flex items-center justify-center gap-2 bg-[#F5A623] hover:bg-[#E09216] text-black font-heading font-bold text-base px-8 py-4 rounded-full transition-all shadow-xl shadow-[#F5A623]/25 hover:scale-[1.03] active:scale-[0.98]"
-              >
-                <CalendarCheck className="w-5 h-5 stroke-[2.5]" />
-                Reservar ahora
-              </a>
-
-              <a
-                href="#cabanas"
-                className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/10 text-white font-heading font-semibold text-base px-8 py-4 rounded-full border border-white/20 hover:border-white/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <Eye className="w-5 h-5" />
-                Ver cabañas
-              </a>
+              <span className="text-[10px] sm:text-[11px] text-[#A8B0AB] block font-normal">
+                Alta velocidad
+              </span>
             </div>
 
-            {/* Badges / Trust indicators */}
-            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 sm:gap-10">
-              
-              {/* Badge 1 */}
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full bg-[#F5A623] flex items-center justify-center text-black shrink-0 shadow-md shadow-[#F5A623]/20">
-                  <Smile className="w-5 h-5 stroke-[2.5]" />
-                </div>
-                <div>
-                  <span className="font-heading font-bold text-white text-base block leading-tight">
-                    +500 Huéspedes
-                  </span>
-                  <span className="text-xs text-[#A0A0A0]">Felices este año</span>
-                </div>
+            {/* Feature 3: Fondo oscuro de tarjeta + borde acento sutil */}
+            <div className="space-y-1">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#16241C] border border-[#2A3A30] flex items-center justify-center text-[#F5A623]">
+                <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
               </div>
-
-              {/* Badge 2 */}
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full bg-[#F5A623] flex items-center justify-center text-black shrink-0 shadow-md shadow-[#F5A623]/20">
-                  <ShieldCheck className="w-5 h-5 stroke-[2.5]" />
-                </div>
-                <div>
-                  <span className="font-heading font-bold text-white text-base block leading-tight">
-                    Reserva 100% Segura
-                  </span>
-                  <span className="text-xs text-[#A0A0A0]">Confirmación inmediata</span>
-                </div>
-              </div>
-
+              <span className="font-heading font-semibold text-white text-[11px] sm:text-xs block leading-tight">
+                Tinaja Caliente
+              </span>
+              <span className="text-[10px] sm:text-[11px] text-[#A8B0AB] block font-normal">
+                A fuego de leña
+              </span>
             </div>
 
           </div>
-
-          {/* Right Column: Featured Image */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              {/* Main Image Container with rounded-3xl */}
-              <div className="relative h-[440px] sm:h-[520px] w-full rounded-[32px] overflow-hidden border border-white/15 shadow-2xl shadow-[#F5A623]/10 group">
-                <Image
-                  src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?q=80&w=1200&auto=format&fit=crop"
-                  alt="Cabaña Refugio del Bosque en Pucón"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  priority
-                />
-                
-                {/* Image Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                {/* Floating Rating Pill */}
-                <div className="absolute top-6 right-6 bg-[#1A1A1A]/90 backdrop-blur-md border border-white/15 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
-                  <Star className="w-4 h-4 fill-[#F5A623] text-[#F5A623]" />
-                  <span className="font-heading font-bold text-white text-sm">4.9 / 5.0</span>
-                  <span className="text-xs text-[#A0A0A0]">(120+ opiniones)</span>
-                </div>
-
-                {/* Bottom Image Overlay Tag */}
-                <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#1A1A1A]/85 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-between">
-                  <div>
-                    <span className="text-xs text-[#F5A623] font-semibold uppercase tracking-wider block">
-                      Incluido en tu estadía
-                    </span>
-                    <p className="font-heading font-bold text-white text-base">
-                      Tinaja Privada de Agua Caliente
-                    </p>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-[#F5A623]/20 border border-[#F5A623]/40 flex items-center justify-center text-[#F5A623]">
-                    <Flame className="w-5 h-5" />
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
         </div>
       </div>
+
+
+
+      {/* 4. TARJETAS FLOTANTES SOBRE EL HERO COMPLETO */}
+      
+      {/* Tarjeta flotante superior derecha */}
+      <div className="hidden lg:flex absolute top-24 right-8 lg:right-16 z-20 bg-[#16241C]/90 backdrop-blur-md border border-[#2A3A30] px-4 py-2 rounded-full items-center gap-2 shadow-2xl">
+        <span className="w-2 h-2 rounded-full bg-[#F5A623]" />
+        <span className="font-heading font-semibold text-white text-xs">Reserva Directa</span>
+        <span className="text-[11px] text-[#A8B0AB]">(Sin comisión)</span>
+      </div>
+
+      {/* Tarjeta rectangular flotante inferior derecha */}
+      <div className="hidden sm:flex absolute bottom-10 right-6 md:right-16 z-20 p-4 sm:p-5 bg-[#16241C]/95 backdrop-blur-md border border-[#2A3A30] rounded-[12px] items-center justify-between shadow-2xl max-w-xs md:max-w-sm">
+        <div className="pr-4">
+          <span className="text-[10px] text-[#F5A623] font-semibold uppercase tracking-wider block">
+            INCLUIDO EN TU ESTADÍA
+          </span>
+          <p className="font-heading font-bold text-white text-xs sm:text-sm mt-0.5">
+            Tinaja Privada de Agua Caliente
+          </p>
+        </div>
+        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F5A623]/20 border border-[#F5A623]/40 flex items-center justify-center text-[#F5A623] shrink-0">
+          <Flame className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+        </div>
+      </div>
+
     </section>
   );
 }
+
+
+
+

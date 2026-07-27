@@ -3,11 +3,11 @@ export interface Cabin {
   name: string;
   tagline: string;
   description: string;
-  pricePerNight: number; // in CLP (Chilean Pesos)
-  capacity: number; // max guests
+  pricePerNight: number; // en CLP
+  capacity: number; // capacidad máxima de huéspedes
   bedrooms: number;
   bathrooms: number;
-  image: string;
+  image: string; // REEMPLAZAR CON FOTO REAL DEL CLIENTE
   featured?: boolean;
   amenities: string[];
 }
@@ -22,6 +22,7 @@ export const CABINS_DATA: Cabin[] = [
     capacity: 4,
     bedrooms: 2,
     bathrooms: 1,
+    /* REEMPLAZAR CON FOTO REAL DEL CLIENTE: public/images/vista-volcan.jpg */
     image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?q=80&w=1200&auto=format&fit=crop",
     featured: true,
     amenities: ["Tinaja Caliente", "Wifi Starlink", "Parrilla Quincho", "Calefacción a Leña", "Estacionamiento"],
@@ -35,6 +36,7 @@ export const CABINS_DATA: Cabin[] = [
     capacity: 2,
     bedrooms: 1,
     bathrooms: 1,
+    /* REEMPLAZAR CON FOTO REAL DEL CLIENTE: public/images/bosque-nativo.jpg */
     image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?q=80&w=1200&auto=format&fit=crop",
     featured: false,
     amenities: ["Wifi Starlink", "Cama King", "Cafetera Nespresso", "Cocina Equipada", "Bosque Privado"],
@@ -48,18 +50,37 @@ export const CABINS_DATA: Cabin[] = [
     capacity: 8,
     bedrooms: 3,
     bathrooms: 2,
+    /* REEMPLAZAR CON FOTO REAL DEL CLIENTE: public/images/refugio-alpino.jpg */
     image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=1200&auto=format&fit=crop",
     featured: false,
     amenities: ["Tinaja Caliente", "Quincho Cerrado", "Wifi Starlink", "Smart TV 55\"", "Estacionamiento 3 Autos"],
   },
 ];
 
+// Fechas reservadas / ocupadas mock por cabaña (formato YYYY-MM-DD)
+export const BOOKED_DATES_BY_CABIN: Record<string, string[]> = {
+  "vista-volcan": [
+    "2026-08-04", "2026-08-05", "2026-08-06",
+    "2026-08-14", "2026-08-15", "2026-08-16",
+    "2026-08-22", "2026-08-23",
+  ],
+  "bosque-nativo": [
+    "2026-08-01", "2026-08-02",
+    "2026-08-10", "2026-08-11", "2026-08-12",
+    "2026-08-28", "2026-08-29",
+  ],
+  "refugio-alpino": [
+    "2026-08-07", "2026-08-08", "2026-08-09",
+    "2026-08-20", "2026-08-21", "2026-08-22",
+  ],
+};
+
 export const BUSINESS_INFO = {
   name: "Refugio del Bosque",
   tagline: "Cabañas de Montaña & Tinajas Calientes",
   location: "Pucón, Región de la Araucanía, Chile",
   whatsappNumber: "+56912345678",
-  whatsappMessage: "Hola, me gustaría reservar en Cabañas Refugio del Bosque.",
+  whatsappMessage: "¡Hola! Quiero más información sobre la disponibilidad de las cabañas 🏡",
   instagram: "@refugiodelbosque.cl",
   facebook: "RefugioDelBosquePucon",
   email: "reservas@refugiodelbosque.cl",
@@ -93,3 +114,4 @@ export const EXTRA_SERVICES: ExtraService[] = [
     description: "Carbón, leña seca de secadero y utensilios profesionales",
   },
 ];
+
