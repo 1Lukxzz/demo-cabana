@@ -29,8 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${manrope.variable} scroll-smooth`}>
-      <body className="bg-[#0F1B14] text-[#FFFFFF] font-sans antialiased selection:bg-[#F5A623] selection:text-[#0F1B14]">
+    <html lang="es" className={`${manrope.variable} scroll-smooth`} suppressHydrationWarning>
+      <body
+        className="bg-[#0F1B14] text-[#FFFFFF] font-sans antialiased selection:bg-[#F5A623] selection:text-[#0F1B14]"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
